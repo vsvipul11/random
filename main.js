@@ -44,7 +44,7 @@ function getDeviceType() {
     console.log("You are using Mobile or iframe");
     console.log(isIframe);
   } else {
-    window.location.replace(`../../qrcode/?${split_url}`);
+    window.location.replace(`../../qrcode/index`);
 
     console.log("You are using Desktop");
   }
