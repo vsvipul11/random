@@ -98,7 +98,7 @@ function init_threeScene(spec) {
     color: 0x503335,
     opacity: faceop,
     // opacity: 0.9,
-    map: new THREE.TextureLoader().load('/glowoption2.png'),
+    map: new THREE.TextureLoader().load('glowoption2.png'),
     depthTest: true,
     depthWrite:false,
     transparent: true,
@@ -292,9 +292,9 @@ function init_threeScene(spec) {
      console.log(faceop);
      
       var loader = new THREE.GLTFLoader();
-      console.log("inside the glb loader", '/flower.glb');
+      console.log("inside the glb loader", 'flower.glb');
       loader.load(
-        '/flower.glb',
+        'flower.glb',
         function (gltf) {
           if (gltf) {
            
@@ -344,7 +344,7 @@ function init_threeScene(spec) {
 
       console.log("inside the glb loader",modelfile);
       loader.load(
-      '/flower.glb',
+      'flower.glb',
         function (gltf) {
           if (gltf) {
             // document.getElementById("s_loader").style.display = "none";
