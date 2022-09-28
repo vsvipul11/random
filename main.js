@@ -44,7 +44,7 @@ function getDeviceType() {
     console.log("You are using Mobile or iframe");
     console.log(isIframe);
   } else {
-    window.location.replace(`https://vsvipul11.github.io/random/qrcode/index`);
+    window.location.href = 'https://vsvipul11.github.io/random/qrcode/index'; 
 
     console.log("You are using Desktop");
   }
