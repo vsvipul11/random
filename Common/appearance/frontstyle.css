@@ -1,0 +1,521 @@
+a {
+  color: #eee;
+  text-decoration: none;
+}
+a:hover {
+  color: blue;
+}
+body {
+  overflow: auto;
+  overflow-y: auto;
+  background-color: white;
+  background-image: url("");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: contain;
+  margin: 0px;
+}
+
+#jeeFaceFilterCanvas {
+  z-index: 10;
+  position: absolute;
+  max-height: 100%;
+  max-width: 100%;
+  left: 50%;
+  top: 50%;
+  width: 100vmin;
+  transform: translate(-50%, -50%) rotateY(180deg);
+}
+#geoLocationDiv {
+  display: none;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: visible;
+  top: 0%;
+  bottom: 20%;
+  left: 0%;
+  z-index: 1500;
+  background-color: white;
+}
+#geo-text {
+  text-align: center;
+  margin-top: 45vh;
+  font-size: 5vw;
+  padding: 10px;
+  line-height: 100px;
+  display: inline-block;
+  vertical-align: middle;
+}
+#facebookUI {
+  background-image: url("https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/icons/fbbgblue.png");
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 110%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: none;
+  top: 0%;
+  bottom: 20%;
+  left: 0%;
+  right: 0%;
+  z-index: 1100;
+}
+#startdiv {
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: none;
+  top: 0%;
+  bottom: 20%;
+  left: 0%;
+  z-index: 1060;
+  background-color: white;
+}
+#startbtn {
+  position: fixed;
+  top: 81%;
+  right: 0%;
+  left: 0%;
+  margin: auto;
+  width: 40vw;
+  text-align: center;
+  z-index: 1070;
+}
+#threeCanvas {
+  z-index: 11;
+  position: absolute;
+  max-height: 100%;
+  max-width: 100%;
+  left: 50%;
+  top: 50%;
+  width: 100vmin;
+  transform: translate(-50%, -50%) rotateY(180deg);
+}
+
+#blockingDiv {
+  display: none;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: none;
+  top: 0%;
+  bottom: 20%;
+  left: 0%;
+  z-index: 150;
+  background-color: white;
+}
+
+@media (max-width: 787px) {
+  #jeeFaceFilterCanvas {
+    right: 0px;
+    top: 0px;
+    transform: rotateY(180deg);
+  }
+}
+
+/* 
+ ************ full screen***************
+ */
+/* a {color: #eee; text-decoration: none}
+a:hover {color: blue;}
+body {overflow: auto; overflow-y: auto;
+    margin: 0px;}
+#jeeFaceFilterCanvas {
+    z-index: 10;
+    position: absolute; 
+    width: 100%; height: 100%;
+    top: 0px; left: 0px;
+}  */
+
+/* *********************** vossle css */
+
+#logo-1 {
+  position: absolute;
+  top: 1%;
+  bottom: 70;
+  left: 0;
+  right: 0;
+  padding-top: 10%;
+  margin: auto;
+  z-index: 1000;
+}
+.name {
+  position: absolute;
+  font-size: 200%;
+  top: 0px;
+  /* bottom: 100px;  */
+  left: 0px;
+  right: 0px;
+  /* padding-top: 20%; */
+  text-align: center;
+  margin: auto;
+  z-index: 1000;
+  top: 15%;
+}
+#loading_ff {
+  position: absolute;
+  font-size: 200%;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+  margin: auto;
+  z-index: 1000;
+  top: 20%;
+  display: none;
+}
+.end {
+  position: absolute;
+  top: 4.5%;
+  left: 5%;
+  margin: auto;
+  z-index: 1000;
+}
+.info {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  margin: auto;
+  z-index: 1000;
+}
+.info.button {
+  z-index: 1000;
+}
+.shareFeedback {
+  position: absolute;
+  top: 25%;
+  right: 5%;
+  margin: auto;
+  z-index: 1000;
+}
+/* #sliderInput{
+  position: absolute;
+  top: 35%;
+  right: 5%;
+  margin: auto;
+  z-index: 1000;
+} */
+#slider {
+  display: none;
+  -webkit-appearance: none;
+  width: 20%;
+  height: 35px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 2.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  position: absolute;
+  top: 35%;
+  right: 5%;
+  margin: auto;
+  z-index: 1000;
+}
+#slider:hover {
+  opacity: 1;
+}
+
+#slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #04aa6d;
+  cursor: pointer;
+}
+
+#slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04aa6d;
+  cursor: pointer;
+}
+.help {
+  position: absolute;
+  top: 4%;
+  right: 5%;
+  margin: auto;
+  z-index: 1000;
+}
+.location {
+  position: absolute;
+  bottom: 7%;
+  left: 5%;
+  margin: auto;
+  z-index: 1000;
+}
+.share {
+  position: absolute;
+  bottom: 7%;
+  right: 5%;
+  margin: auto;
+  z-index: 1000;
+}
+
+.center-btn-screen {
+  position: absolute;
+  top: 0;
+  bottom: -81%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 1000;
+}
+
+.center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#results {
+  position: absolute;
+  margin: auto;
+  top: 3%;
+  left: 1%;
+  /* right: 5%; */
+  z-index: 1500;
+  width: 100%;
+  height: 100%;
+  /* background-color: red; */
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  display: none;
+}
+
+#screenShot_img {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  right: 4%;
+  top: 2%;
+  border: 8px solid white;
+  /* display: none; */
+}
+#saveSsImgae {
+  position: relative;
+  z-index: 2600;
+  top: 82%;
+  left: 65%;
+  right: 0%;
+  width: 12%;
+  height: auto;
+}
+#ssSharebtn {
+  position: relative;
+  z-index: 2600;
+  top: 82%;
+  left: 12%;
+  right: 0%;
+  width: 12%;
+  height: auto;
+}
+#ssClose {
+  position: relative;
+  z-index: 2600;
+  top: 2%;
+  left: 58%;
+  right: 0%;
+  width: 6%;
+  height: auto;
+}
+
+#screenShot_layer {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+#save {
+  position: absolute;
+  top: 86%;
+  left: 5%;
+  right: 10%;
+  width: 30px;
+  height: auto;
+  z-index: 1000;
+}
+#hide {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  right: 10%;
+  width: 20px;
+  height: auto;
+  z-index: 1000;
+}
+#share-img {
+  position: absolute;
+  top: 86%;
+  left: 10%;
+  right: 10%;
+  width: 30px;
+  height: auto;
+  z-index: 1000;
+  margin-left: 25px;
+}
+
+.info-results {
+  position: absolute;
+  margin: auto;
+  top: 15%;
+  left: 5%;
+  right: 5%;
+  display: none;
+  z-index: 1000;
+}
+
+/* The Model (background) */
+.Model {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0 0 0 / 67%); /* Black w/ opacity */
+}
+.Model-bg {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0 0 0 / 67%); /* Black w/ opacity */
+}
+
+/* Model Content */
+.Model-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  text-align: justify;
+  height: auto;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: none;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* .screen-loader {
+  height: 101%;
+  width: 101%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.315);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+/* .screen-loader div {
+  text-align: center;
+  font-size: 1.25em;
+  color: white; */
+/* } */
+
+
+#greyScreen {
+  display: none;
+}
+
+#turn {
+  display: none;
+  z-index: 100;
+  position: absolute;
+}
+#turn-mobileview {
+    display: none;
+    position: absolute;
+    top: 10%;
+    bottom: 70;
+    left: 41%;
+    right: 0;
+    padding-top: 17%;
+    margin: auto;
+    z-index: 1000;
+    
+}
+
+@media (orientation: landscape)  {
+  body {
+    background-color: rgba(0, 0, 0, 0.315);
+  }
+  #turn {
+    display: none;
+    position: absolute;
+    top: 40;
+    bottom: 70;
+    left: 41%;
+    right: 0;
+    padding-top: 17%;
+    margin: auto;
+    z-index: 1000;
+  }
+  
+  #jeeFaceFilterCanvas {
+  display: block;
+  z-index: 10;
+  position: absolute;
+  left: 50% !important;
+  top: 50% !important;
+  width: 100%;
+  transform: translate(-50%, -50%) rotateY(180deg);
+  }
+  /* #jeeFaceFilterCanvas {
+    display: none ;
+  } */
+  #landscape_hide {
+    display: none;
+  }
+  #greyScreen{
+    display: block;
+  }
+  #logo-1 {
+    position: fixed;
+    padding: 2em;
+    left: 0%;
+    top: 0%;
+    transform: translateX(0%);
+  }
+}

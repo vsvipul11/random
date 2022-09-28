@@ -1,0 +1,279 @@
+/* a {color: #eee; text-decoration: none}
+a:hover {color: blue;}
+body {overflow: auto; overflow-y: auto;
+  background-color: white;
+  background-image: url('');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: contain;
+  margin: 0px;}
+
+#jeeFaceFilterCanvas {
+  z-index: 10;
+  position: absolute; 
+  max-height: 100%;
+  max-width: 100%;
+  left: 50%;
+  top: 50%;
+  width: 100vmin;
+  transform: translate(-50%, -50%) rotateY(180deg);
+}  */
+
+/* #threeCanvas{
+  z-index: 11;
+  position: absolute;
+  max-height: 100%;
+  max-width: 100%;
+  left: 50%;
+  top: 50%;
+  width: 100vmin;
+  transform: translate(-50%, -50%) rotateY(180deg);
+}
+
+@media (max-width: 787px) {
+  #jeeFaceFilterCanvas {
+    right: 0px;
+    top: 60px;
+    transform: rotateY(180deg);
+  }
+} */
+
+/* 
+ ************ full screen***************
+ */
+ a {color: #eee; text-decoration: none}
+a:hover {color: blue;}
+body {overflow: auto; overflow-y: auto;
+    margin: 0px;}
+#jeeFaceFilterCanvas {
+    z-index: 10;
+    position: absolute; 
+    width: 100%; height: 100%;
+    top: 0px; left: 0px;
+} 
+
+/* *********************** vossle css */
+
+#logo-1 {
+  position: absolute; 
+  top: 30; 
+  bottom: 70; 
+  left: 0; 
+  right: 0; 
+  padding-top: 10%;
+  margin: auto; 
+  z-index: 1000
+}
+.name {
+  position: absolute; 
+  font-size: 200%;
+  top: 0px; 
+  /* bottom: 100px;  */
+  left: 0px; 
+  right: 0px;   
+  /* padding-top: 20%; */
+  text-align: center;
+  margin: auto;
+  z-index: 1000;
+  top: 15%; 
+}
+#loading_ff{
+  position: absolute; 
+  font-size: 200%;
+  left: 0px; 
+  right: 0px;   
+  text-align: center;
+  margin: auto;
+  z-index: 1000;
+  top: 20%; 
+  display: none;
+}
+.end {
+  position: absolute; 
+  top: 4.5%; 
+  left: 5%;
+  margin: auto;
+  z-index: 1000; 
+}
+.info {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  margin: auto;
+  z-index: 1000;
+}
+.info.button{
+  z-index: 1000;
+}
+
+.help {
+  position: absolute;
+  top: 4%;
+  right: 5%;
+  margin: auto; 
+  z-index: 1000;
+}
+.location { 
+  position: absolute; 
+  bottom: 7%; 
+  left: 5%;
+  margin: auto; 
+  z-index: 1000;
+}
+.share {
+  position: absolute; 
+  bottom: 7%; 
+  right: 5%;
+  margin: auto; 
+  z-index: 1000;
+}
+
+.center-btn-screen {
+  position: absolute; 
+  top: 0; 
+  bottom: -81%; 
+  left: 0; 
+  right: 0; 
+  margin: auto; 
+  z-index: 1000;       
+}
+
+.center { 
+  position: absolute; 
+  top: 0; 
+  bottom: 0; 
+  left: 0; 
+  right: 0; 
+  margin: auto; 
+} 
+
+#results{
+  position: absolute;
+  margin: auto;
+  top: 15%;
+  left: 5%;
+  right: 5%;
+  z-index: 1500;
+  width: auto;
+  height: auto; 
+  /* background-color: red; */
+  /* -webkit-transform: scaleX(-1);
+  transform: scaleX(-1); */
+}
+#screenShot_layer{
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+#save{
+  position: absolute;
+  top: 86%;
+  left: 5%;
+  right: 10%;
+  width: 30px;
+  height: auto;
+  z-index: 1000;
+}
+#hide{
+  position: absolute;
+    top: 5%;
+    left: 5%; 
+    right: 10%;
+    width: 20px;
+    height: auto;
+    z-index: 1000;
+ }
+ #share-img{
+  position: absolute;
+  top: 86%;
+  left: 10%;
+  right: 10%;
+  width: 30px;
+  height: auto;
+  z-index: 1000;
+  margin-left: 25px;
+}
+
+.info-results{
+ position: absolute;
+ margin: auto;
+ top: 15%;
+ left: 5%;
+ right: 5%;
+ display: none;
+ z-index: 1000;
+}
+
+/* The Model (background) */
+.Model  {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0 0 0 / 67%); /* Black w/ opacity */
+}
+.Model-bg  {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0 0 0 / 67%); /* Black w/ opacity */
+}
+
+/* Model Content */
+.Model-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  text-align: justify;
+  height: auto;
+
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: none;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.screen-loader {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.315);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* .screen-loader div {
+  text-align: center;
+  font-size: 1.25em;
+  color: white; */
+/* } */

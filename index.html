@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-language" content="en-EN" />
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/icons/favicon.png"
+    />
+    <meta name="viewport" content="user-scalable=no" />
+    <title>Try-on</title>
+    <!-- INCLUDE JEELIZ FACEFILTER SCRIPT -->
+    <script src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/123f/dist/jeelizFaceFilter.js"></script>
+
+    <!--- Include Animation in experience------>
+    <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+
+    <div id="splash_screen">
+      
+        <img
+          src="/finalLayout.png"/>
+      
+      </div>
+      <script>
+        
+         if(splashDisplay){
+        document.getElementById("jeeFaceFilterCanvas").style.display = "none";
+       }
+      </script>
+
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@<version>/build/three.module.js"
+    }
+  }
+</script>
+
+    <!-- INCLUDE THREE.JS -->
+    <script src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/123f/libs/three/v112/three.js"></script>
+    <script src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/123f/libs/three/v112/GLTFLoader.js"></script>
+
+    <!-- INCLUDE JEELIZ THREE.JS HELPER -->
+    <script src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/Common/helpers/JeelizThreeHelper.js"></script>
+
+    <!-- INCLUDE JEELIZRESIZER -->
+    <script src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/Common/helpers/JeelizResizer.js"></script>
+
+    <!-- INCLUDE DEMO SCRIPT AND GLASSES CREATOR -->
+    <script src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/123f/JeelizThreeGlassesCreator.js"></script>
+    <!-- watermark  js -->
+    <!-- <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.3.min.js"></script> -->
+    <!-- <script src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/Common/waterlib/watermark.js"></script> -->
+    <!-- <script src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/Common/waterlib/procedural-watermark-sample.js"></script> -->
+
+    <script>
+      var isMobile = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (isMobile) {
+        console.log("iPhone");
+        (function () {
+          if (window.localStorage) {
+            if (!localStorage.getItem("firstLoad")) {
+              localStorage["firstLoad"] = true;
+              window.location.reload();
+            } else localStorage.removeItem("firstLoad");
+          }
+        })();
+      } else {
+        console.log("Android");
+      }
+    </script>
+    <link
+      rel="stylesheet"
+      href="../Common/appearance/frontstyle.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/Common/appearance/feedback.css"
+      type="text/css"
+    />
+  </head>
+
+  <body onload="main()" style="margin: 0px; overflow: hidden">
+    <!-- **************** code for Geo Location ********************* -->
+    <div id="geoLocationDiv">
+      <p id ="geo-text"> 
+        This experience is restricted to work in certain locations only.
+      </p>
+    </div>
+    <!-- **************** code for Geo Location ********************* -->
+
+    <!-- ************ code for blocking experience *********** -->
+    <!-- <div id="blockingDiv">
+  <p style="text-align: center; margin-top: 50vh;
+  font-size: 5vw;">You have reached the limit</p>
+</div>   -->
+    <!--************ end code for blocking experience *********** -->
+
+    <!-- landscape html -->
+       <!-- vipul edit greyscreen -->
+   
+    <img
+      src="https://wallpaperfordesktop.com/wp-content/uploads/2022/07/Grey-HD-Wallpaper.jpg"
+      alt=""
+      id="greyScreen"
+    />
+   <!-- vipul edit grey screen -->
+    <img
+      src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/123f/img/vossle-logo.png"
+      width="200"
+      height="auto"
+      id="logo-1"
+    />
+    <div id="turn">
+      <h4>Please turn your device</h4>
+    </div>
+    <div id="turn-mobileview">
+      <h4>Please turn your device</h4>
+    </div>
+    <!-- end landscape html -->
+
+    <!-- landscape screen hide  div-->
+    <div id="landscape_hide">
+      <!-- <div class="screen-loader" id="s_loader">
+        <img
+          src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/icons/loading button.gif"
+        />
+      </div> -->
+      <!-- Experience Name -->
+      <p id="name" class="name"></p>
+
+      <!-- facebook browser UI  -->
+      <div class="fbcover img-fluid" id="facebookUI">
+        <img
+          src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/icons/fbtap.png"
+          alt=""
+          class="mt-3 img-fluid"
+          style="
+            float: right;
+            padding-right: 5%;
+            margin-top: 5%;
+            width: 100px;
+            height: auto;
+          "
+        />
+      </div>
+      <div id="loading_ff">Please wait, while your experience is loading...</div>
+      <!-- screenshot button -->
+      <div id="button">
+        <input
+          type="image"
+          src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/123f/img/screenshot.png"
+          id="photo-button"
+          width="250"
+          height="auto"
+          class="center-btn-screen"
+        />
+        <!-- <a id="descarga-link" href="#"></a> -->
+      </div>
+
+      <!-- Model content for displaying grey color  -->
+      <!-- <div id="myModelBg" class="Model-bg info-results"> -->
+      <!-- </div>  -->
+
+      <!-- create screenshot layer -->
+      <div id="results" class="">
+      <!-- screenshot image will be display within this div -->
+        <a id="descarga-link" href="#"></a>
+      </div>
+
+      <!-- used for image watermark -->
+      <img
+        src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/123f/img/vossle-logo.png"
+        id="watermark"
+        style="display: none"
+      />
+      <!-- end create screenshot layer -->
+      <!-- End screenshot button -->
+
+      <!-- camera flip button -->
+      <!-- <input type="image" src="img/cam.png"  width="100" height="auto"  class="location" id="flip-button" /> -->
+      <!--vossle logo -->
+      <img
+        src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/123f/img/vossle-logo.png"
+        width="200"
+        height="auto"
+        id="logo-1"
+      />
+
+      <!--Info Button -->
+      <input
+        type="image"
+        src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/icons/info.png"
+        width="100"
+        height="auto"
+        class="info"
+        id="info-btn"
+      />
+
+      <!--Help Button -->
+      <input
+        type="image"
+        src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/icons/help.png"
+        width="100"
+        height="auto"
+        class="help"
+        id="help-btn"
+      />
+
+      <!--Share Button -->
+      <input
+        type="image"
+        src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/icons/share.png"
+        width="100"
+        height="auto"
+        class="share"
+        id="url_share"
+      />
+      <!--feedback Button -->
+      <input
+        type="image"
+        src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/123f/img/Formicon.png"
+        class="shareFeedback"
+        id="shareFeedbackId"
+        width="100"
+        height="auto"
+        onclick="document.getElementById('id01').style.display='block'"
+      />
+      <!--feedback model box -->
+      <!--Step 1:Adding HTML-->
+      <div id="id01" class="modalfd">
+        <!-- <span onclick="document.getElementById('id01').style.display='none'" class="close2" title="Close Modal">×</span> -->
+        <form class="modal-content-2 animate" id="FeedbackForm">
+          <div class="container">
+            <h5 id="exampleModalLabel">Please fill in the below details</h5>
+            <hr />
+            <br />
+            <label style="margin-left: 4%; color: red" id="error-msg"></label
+            ><br /><br /><br />
+            <label>Full Name<b style="color: red">*</b></label>
+            <input type="text" id="recipient-name" required />
+
+            <label>Email<b style="color: red">*</b></label>
+            <input type="text" id="recipient-email" required />
+
+            <label>Contact No<b style="color: red">*</b></label>
+            <input type="text" id="recipient-contact" required />
+
+            <label>Message<b style="color: red">*</b></label>
+            <textarea id="message-text" required></textarea>
+
+            <div class="clearfix">
+              <input
+                type="image"
+                class="submitbtn"
+                id="submitbtn"
+                src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/123f/img/submit.png"
+              />
+              <input
+                type="image"
+                class="cancelbtn"
+                id="closebtn"
+                src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/123f/img/cancel.png"
+              />
+              <script></script>
+            </div>
+          </div>
+          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        </form>
+      </div>
+
+      <audio id="bgaudio">
+        <source
+          src="audio1.mp3"
+          type="audio/mp3"
+        />
+      </audio>
+
+      <!--close the modal by just clicking outside of the modal-->
+      <script>
+        var modal = document.getElementById("id01");
+
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        };
+      </script>
+      <!--feedback model box end -->
+      <!-- splash image start -->
+      <div id="startdiv">
+        <img id="startbtn" />
+      </div>
+      <!-- splash image div end -->
+      <!-- Model box -->
+      <div id="myModel" class="Model info-results">
+        <!-- Model content -->
+        <div class="Model-content">
+          <span class="close mb-3">&times;</span><br />
+          <p>
+            Experience the world around you in an magical new way using Vossle
+            Augmented Reality
+          </p>
+        </div>
+      </div>
+
+      <!--check app.js for model js code   -->
+      <!-- end Model box -->
+    </div>
+    <!-- end of landscape screen hide div -->
+    <!-- <canvas width="600" height="1300" id='jeeFaceFilterCanvas'></canvas> -->
+    <canvas width="600" height="600" id="jeeFaceFilterCanvas"> </canvas>
+    <!-- <div width="600" height="600" id='jeeFaceFilterCanvas'></div> -->
+
+    <!-- <video id="camera-stream"></video> -->
+    <!-- ****** vossle js *********** -->
+    <script>
+      document.getElementById("splash_screen").style.display= "none" ;
+       splashDisplay= false;
+
+
+      
+
+      
+      //    async function callApi2(body)
+    //   {
+    //   var slug_url;
+    //   var splash_image;
+    //   var contentAsset;
+    //   var exp_id;
+    //   var query = window.location.search.replace("?", "");
+    //   slug_url = query.split("?id=");
+    //   slug_url = `${slug_url}`.replace('id=','');
+    //   console.log("slug_url", slug_url);
+
+    //   var myHeaders = new Headers();
+    //   myHeaders.append(
+    //     "Cookie",
+    //     "AWSALB=avveZ58F2waXKb4NZD8TZs5C+9D1t30UHXviin7HrCN2xUbzbG4tq3YDnZgiNZySnPUdVQeuOrtUfCafzY+fBnXXWu1IqKRGqVcRuSrBglgO6ml8390raScBe/ZL; AWSALBCORS=avveZ58F2waXKb4NZD8TZs5C+9D1t30UHXviin7HrCN2xUbzbG4tq3YDnZgiNZySnPUdVQeuOrtUfCafzY+fBnXXWu1IqKRGqVcRuSrBglgO6ml8390raScBe/ZL"
+    //   );
+    //   var requestOptionsV2 = {
+    //     method: "GET",
+    //     headers: {
+    //       myHeaders,
+    //       "Access-Control-Allow-Origin": "*",
+    //     },
+    //     redirect: "follow",
+    //   };
+    //   let respV2 = await fetch(
+    //     "https://apiv2.morkshub.xyz/public/api/get_node/" + slug_url,
+    //     requestOptionsV2
+    //   );
+
+    //   let textV2 = await respV2.text();
+    //   let jsonrespV2 = JSON.parse(textV2);
+    //   // console.log("jsonrespV2.data", jsonrespV2.data[0]);
+
+    //   ////////////////////////////////////////////////////////////////////
+
+    //   // return jsonresp;
+    //   return jsonrespV2.data;
+    //   // return jsonresp;
+    // }
+    //   async function apiData2 ()
+    //     {
+    //       const jsonResp = await callApi2();
+    //       const experience = jsonResp;
+    //       console.log("experience in html", experience);
+    //         // var content = experience.content
+    //         // var splash_image = experience.splash_image;
+    //         var ApiAssetUrl = "https://vossle-v2.s3.ap-south-1.amazonaws.com/";
+    //         experience.map((exp) => {
+    //           lat = exp.latitude;
+    //           long = exp.longitude;
+    //           distance = exp.distance;
+    //           contentAsset = exp.assets;
+    //           localStorage.setItem("exp_id", exp.id);  
+    //           contentAsset.map((contentData) => {
+    //             if(contentData.type == 'splash_screen')
+    //             { 
+    //             splash_image =
+    //             ApiAssetUrl + contentData.assets;
+    //             }
+    //             else
+    //             {
+    //               splash_image = ""
+    //             }
+    //           });
+    //         });
+    //             // **************** code for Geo Location *********************
+    //         // alert('lat '+ lat +'long ' + long + 'dist ' +distance)
+    //         if (lat !== "" && long !== "") {
+    //           if (navigator.geolocation) {
+    //             navigator.geolocation.getCurrentPosition(showPosition);
+    //           } else {
+    //             console.log("Geo location not supported");
+    //           }
+    //         }
+
+            function showPosition(position) {
+              const dist =
+                getDistanceFromLatLonInKm(
+                  position.coords.latitude,
+                  position.coords.longitude,
+                  lat,
+                  long
+                ) * 1000;
+              console.log(
+                position.coords.latitude,
+                position.coords.longitude,
+                lat,
+                long
+              );
+              if (dist < distance) {
+                console.log(dist);
+              } else {
+                document.getElementById('startdiv').style.display = 'none'
+                document.getElementById('logo-1').style.zIndex = '1510'
+                document.getElementById("geoLocationDiv").style.display = "block";
+                console.log(
+                  "This experience is restricted to work in certain locations only.",
+                  dist
+                );
+              }
+            } 
+
+            function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+              var p = 0.017453292519943295; // Math.PI / 180
+              var c = Math.cos;
+              var a =
+                0.5 -
+                c((lat2 - lat1) * p) / 2 +
+                (c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))) / 2;
+              return 12742 * Math.asin(Math.sqrt(a)); // this gives distance in KM
+            }
+            // **************** end code for Geo Location *********************
+            //******************* splash image *********************************
+            if(true)
+            {
+              document.getElementById('startdiv').style.display = 'block'
+              document.getElementById('startdiv').style.backgroundImage = `url("/finalLayout.png")`
+              document.getElementById('startbtn').src = "/startButton.png"
+                      //alert('splash image found')
+                      document.getElementById('startbtn').addEventListener('click', function() {
+                        document.getElementById('startdiv').style.display ="none"
+                        document.getElementById('startbtn').style.display ="none"
+                      });  
+
+            }
+            //******************* splash image end *********************************
+        
+      // apiData2()
+
+
+
+      // code for facebook browser
+      var isMobile2 = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (isMobile2) {
+        console.log("inside facebook browser", "iPhone");
+      } else {
+        console.log("inside sound", "Android");
+        function isFacebookApp() {
+          var ua = navigator.userAgent || navigator.vendor || window.opera;
+          return ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1;
+        }
+        if (isFacebookApp() == true) {
+          // alert('not supported ')
+          document.getElementById("s_loader").style.display = "none";
+          document.getElementById("facebookUI").style.display = "block";
+        }
+      }
+      // document.getElementById('facebookUI').style.display = "block"
+      // code for facebook browser end
+      // console.log('exp_id',exp_id);
+    </script>
+    <!-- Global site tag (gtag.js) by API -->
+    <script async id="gaTagTryOn"></script>
+    <!--GA for experience  -->
+    <script async id="exGaTag"></script>
+    <script src="https://vossle-v2.s3.ap-south-1.amazonaws.com/frontend2/T/Common/button.js"></script>
+    <script src="main.js"></script>
+    <script src="feedback.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XQHX3GT9MT"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XQHX3GT9MT");
+    </script>
+  </body>
+</html>
